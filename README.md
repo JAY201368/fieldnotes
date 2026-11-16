@@ -1,12 +1,14 @@
 <div align="center">
 
-✳ &nbsp; **F I E L D &nbsp; N O T E S** &nbsp; ✳
+✳ &nbsp; **F I E L D N O T E S** &nbsp; ✳
 
-# Big ideas deserve a clearer path.
+# Fieldnotes
+
+Big ideas deserve a clearer path.
 
 **A Codex skill for carrying a software idea from a shared plan to an evidenced delivery.**
 
-[Explore the illustrated guide ↗](https://jay201368.github.io/codex-orchestrate-spec-driven-development/) &nbsp; · &nbsp; [Install](#install) &nbsp; · &nbsp; [Read the skill](SKILL.md)
+[Explore the illustrated guide ↗](https://jay201368.github.io/fieldnotes/) &nbsp; · &nbsp; [Install](#install) &nbsp; · &nbsp; [Read the skill](SKILL.md)
 
 </div>
 
@@ -45,15 +47,15 @@ The main agent maintains shared workflow records and accepts work. The default i
 Clone the repository into your Codex skills directory, then install the worker profiles:
 
 ```bash
-git clone https://github.com/JAY201368/codex-orchestrate-spec-driven-development.git ~/.codex/skills/orchestrate-spec-driven-development
+git clone https://github.com/JAY201368/fieldnotes.git ~/.codex/skills/fieldnotes
 mkdir -p ~/.codex/agents
-cp ~/.codex/skills/orchestrate-spec-driven-development/assets/worker-profiles/*.toml ~/.codex/agents/
+cp ~/.codex/skills/fieldnotes/assets/worker-profiles/*.toml ~/.codex/agents/
 ```
 
 Start a new chat after installing or updating the profiles so Codex can discover them. Invoke the skill with:
 
 ```text
-$orchestrate-spec-driven-development
+$fieldnotes
 ```
 
 Then describe the project, the outcome you want, and any existing requirements or project documents. The skill can adapt to an existing repository's document paths. Available models and effective runtime settings depend on your Codex environment.
@@ -76,6 +78,6 @@ The structural validator checks document and task structure. Requirement coverag
 
 Made for the work between an idea and a finished stage. &nbsp; ✳
 
-[Illustrated guide ↗](https://jay201368.github.io/codex-orchestrate-spec-driven-development/) &nbsp; · &nbsp; [MIT License](LICENSE)
+[Illustrated guide ↗](https://jay201368.github.io/fieldnotes/) &nbsp; · &nbsp; [MIT License](LICENSE)
 
 </div>

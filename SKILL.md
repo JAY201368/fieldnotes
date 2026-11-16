@@ -1,9 +1,9 @@
 ---
-name: orchestrate-spec-driven-development
+name: fieldnotes
 description: Plan and deliver software in explicit development stages, with requirement-linked task cards, fresh task workers, dependency-aware parallel execution, proportionate acceptance, and confirmed stage archival. Use for staged project planning, implementation orchestration, resuming delivery, or transitioning an existing project to its next stage.
 ---
 
-# Orchestrate Spec-Driven Development
+# Fieldnotes
 
 Maintain an agreed stage goal, complete task contracts, and evidence sufficient to accept the requested outcome. The main agent owns planning, dispatch, integration, shared records, and acceptance. Every task gets a fresh worker context. Continue through the authorized milestone without silently reducing scope.
 

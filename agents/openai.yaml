@@ -1,4 +1,4 @@
 interface:
-  display_name: "规格驱动开发编排"
+  display_name: "Fieldnotes"
   short_description: "按开发阶段规划、独立任务并行交付、复用验收证据并归档交接"
-  default_prompt: "Use $orchestrate-spec-driven-development to plan the current development stage, dispatch independent tasks to fresh workers, and accept work with proportionate reusable evidence."
+  default_prompt: "Use $fieldnotes to plan the current development stage, dispatch independent tasks to fresh workers, and accept work with proportionate reusable evidence."
