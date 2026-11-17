@@ -33,6 +33,9 @@ h1, h2, h3, h4, p { margin: 0; }
 .brand-mark { font-size: 34px; color: var(--orange); }
 nav { display: flex; gap: 30px; }
 nav a, .repo-link { font-size: 13px; font-weight: 700; text-decoration: none; }
+.topbar-actions { display: flex; align-items: center; gap: 10px; }
+.lang-link { font-size: 12px; font-weight: 700; text-decoration: none; padding: 7px 11px; border: 1px dashed var(--line); white-space: nowrap; }
+.lang-link:hover { border-color: var(--orange); }
 .repo-link { padding: 8px 15px; border: 1px solid var(--ink); transform: rotate(-1deg); }
 .overview { padding: 48px 0 64px; }
 .intro-heading { display: grid; grid-template-columns: 1.1fr 1fr; gap: 80px; align-items: end; margin-bottom: 40px; }
@@ -236,7 +239,11 @@ footer { display: flex; align-items: center; justify-content: space-between; pad
   .context-card { padding: 12px; }
 }
 @media (max-width: 650px) {
+  .topbar { gap: 10px; }
   .topbar nav { display: none; }
+  .brand small { display: none; }
+  .repo-link { white-space: nowrap; padding: 7px 11px; }
+  .lang-link { white-space: nowrap; padding: 6px 9px; }
   .intro-heading, .start-grid { grid-template-columns: 1fr; gap: 25px; }
   .diagram-heading { align-items: start; flex-direction: column; gap: 8px; }
   .map-source { width: 100%; }

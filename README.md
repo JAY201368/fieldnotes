@@ -1,5 +1,7 @@
 <div align="center">
 
+**English** &nbsp; · &nbsp; [简体中文](README.zh-CN.md)
+
 ✳ &nbsp; **M A E S T R O** &nbsp; ✳
 
 # Maestro

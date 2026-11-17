@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="了解 Maestro 如何把用户需求、架构、任务规划、分层子代理、共享记录与阶段控制连接起来。">
+  <meta name="theme-color" content="#f6f3e8">
+  <title>Maestro — 开发编排图解指南</title>
+  <link rel="alternate" hreflang="en" href="index.html">
+  <link rel="alternate" hreflang="zh-CN" href="index.zh-CN.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Gaegu:wght@400;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    :root {
+      --sans: 'DM Sans', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
+      --hand: 'Gaegu', 'Kaiti SC', 'STKaiti', 'KaiTi', cursive;
+      --mono: 'Space Mono', 'PingFang SC', 'Hiragino Sans GB', monospace;
+    }
+    body { line-height: 1.7; }
+    h1 { letter-spacing: -.03em; }
+    .section-heading h2, .start-section h2 { letter-spacing: -.02em; }
+    .orchestrator h3, .context-card h3, .routing-grid h4, .map-source h3, .design-stack h3 { letter-spacing: 0; }
+    .flow-node h3 { letter-spacing: 0; }
+    @media (min-width: 651px) {
+      .system-row { grid-template-columns: 1fr 82px 1.14fr 122px 1fr; }
+      .relation span { font-size: 13px; }
+      .worker-relation { padding: 0 4px; }
+      .worker-relation > span:first-child { white-space: nowrap; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar wrap">
+    <a class="brand" href="#top"><span class="brand-mark">✳</span><span>MAESTRO<small>开发编排</small></span></a>
+    <nav aria-label="主导航"><a href="#system">系统</a><a href="#workflow">流程</a><a href="#context">共享上下文</a></nav>
+    <div class="topbar-actions"><a class="lang-link" href="index.html" hreflang="en" lang="en">English</a><a class="repo-link" href="https://github.com/JAY201368/maestro">GitHub ↗</a></div>
+  </header>
+  <main id="top">
+    <section class="overview wrap" id="system">
+      <div class="intro-heading">
+        <div><p class="eyebrow">一个 CODEX 编排技能</p><h1>复杂的工作，<br><span>有序协同。</span></h1></div>
+        <div class="intro-copy"><p>用户的需求驱动架构、计划以及每一项任务。Maestro 把它们连接成一套能够跨越全新上下文持续推进的流程。</p><a class="text-link" href="#workflow">跟随一个阶段从开始走到结束 ↓</a></div>
+      </div>
+      <div class="diagram-heading"><h2>系统如何协同运作</h2><span class="hand">需求引领工作 ↙</span></div>
+<div class="system-map diagram" id="system-map">
+  <div class="map-source sketch-card">
+    <span class="node-label">一切决策的源头</span>
+    <h3>用户需求</h3>
+    <p>讨论决策 → 确认共识理解</p>
+  </div>
+  <div class="vertical-link"><span>指导设计、分派与验收</span></div>
+  <div class="system-row">
+    <div class="design-stack sketch-card">
+      <span class="node-label">设计与规划</span>
+      <h3>架构</h3>
+      <p>组件、契约、数据与状态规则</p>
+      <div class="inner-arrow" aria-hidden="true">↓</div>
+      <h3>任务图</h3>
+      <p>依赖、归属与检查</p>
+    </div>
+    <div class="relation design-relation"><span>设计并<br>维护</span><i class="arrow-line reverse"></i></div>
+    <div class="orchestrator sketch-card">
+      <span class="node-label">MAESTRO / 主代理</span>
+      <h3>编排</h3>
+      <ul><li>选择与分派</li><li>集成与评审</li><li>验收与记录</li><li>掌控阶段转换</li></ul>
+    </div>
+    <div class="relation worker-relation"><span>任务 + 上下文</span><i class="arrow-line"></i><span class="return-label">结果 + 证据</span><i class="arrow-line reverse"></i></div>
+    <div class="worker-group">
+      <span class="node-label">任务执行者</span>
+      <div class="worker-slip"><strong>执行者 A</strong><span>一个任务 · 全新上下文</span></div>
+      <div class="worker-slip"><strong>执行者 B</strong><span>一个任务 · 全新上下文</span></div>
+      <p class="worker-caption">相互独立的任务并行执行。<br>默认上限 · 两个实现类执行者。</p>
+    </div>
+  </div>
+  <div class="records-connector"><span>主代理写入 · 全新上下文读取</span><i aria-hidden="true">↓</i></div>
+  <div class="records-foundation">
+    <div><span class="node-label">共享项目记录</span><strong>持续传递下去的上下文</strong></div>
+    <div class="document-tags"><span>需求</span><span>架构</span><span>任务</span><span>进度</span><span>决策</span><span>证据</span></div>
+  </div>
+</div>
+      <div class="routing-header"><h3>为每个任务选择合适的配置</h3><p>复杂度 + 不确定性 + 失败代价 → 模型与推理深度</p></div>
+      <div class="routing-grid">
+        <article><h4>Luna</h4><p>边界明确的日常性工作</p><span class="effort">max</span></article>
+        <article><h4>Sol</h4><p>实现与集成</p><span class="effort">medium · high · xhigh · max</span></article>
+        <article><h4>Astra</h4><p>设计不确定性与跨系统推理</p><span class="effort">medium · high · xhigh · max</span></article>
+      </div>
+      <p class="routing-foot">复杂任务可以从更强的配置起步。<a href="https://github.com/JAY201368/maestro/blob/main/references/worker-routing.md">路由规则 ↗</a></p>
+    </section>
+    <section class="workflow-section" id="workflow"><div class="wrap">
+      <div class="section-heading"><div><p class="eyebrow">总体流程</p><h2>一个阶段，从需求简报到交接。</h2></div><p>自上而下阅读。当任务需要再来一轮、或队列中仍有工作时，沿着回路继续。</p></div>
+<div class="lifecycle diagram" id="lifecycle-map">
+  <div class="discussion-return-route" aria-hidden="true"></div>
+  <div class="phase discussion-phase" id="discussion">
+    <div class="phase-caption"><span class="phase-mark">共同讨论</span><p>新项目、新阶段，或需求的重大变更。</p></div>
+    <div class="plan-lane">
+      <div class="flow-node"><h3>梳理决策</h3><p>代理查证事实。<br>用户决定产品取舍。</p></div>
+      <div class="simple-arrow" aria-hidden="true">→</div>
+      <div class="flow-node"><h3>分轮提问</h3><p>回答已经明确的问题。<br>解锁后续分支。</p></div>
+      <div class="simple-arrow" aria-hidden="true">→</div>
+      <div class="flow-node review-node"><h3>确认理解</h3><p>就范围、场景、<br>约束与验收达成一致。</p></div>
+    </div>
+    <p class="discussion-note hand">持续讨论，直到相关分支全部解决。</p>
+  </div>
+  <div class="phase-transition"><span>用户确认共识理解</span><b aria-hidden="true">↓</b></div>
+  <div class="phase">
+    <div class="phase-caption"><span class="phase-mark">规划</span><p>依据已确认的需求制定计划。</p></div>
+    <div class="plan-lane">
+      <div class="flow-node"><h3>初始化阶段</h3><p>记录已达成的需求<br>及其确认来源。</p></div>
+      <div class="simple-arrow" aria-hidden="true">→</div>
+      <div class="flow-node"><h3>设计架构</h3><p>接口、不变量与失败规则</p></div>
+      <div class="simple-arrow" aria-hidden="true">→</div>
+      <div class="flow-node"><h3>规划任务图</h3><p>依赖、归属与验收</p></div>
+    </div>
+  </div>
+  <div class="phase-transition"><span>契约与任务卡就绪</span><b aria-hidden="true">↓</b></div>
+  <div class="phase execution-phase">
+    <div class="phase-caption"><span class="phase-mark">逐项执行任务</span><p>主代理掌控分派与验收。</p></div>
+    <div class="task-lane">
+      <div class="flow-node"><h3>选择就绪任务</h3><p>检查依赖。<br>选择模型 + 推理强度。</p></div>
+      <div class="simple-arrow" aria-hidden="true">→</div>
+      <div class="flow-node"><h3>全新的执行者</h3><p>实现该任务。<br>返回结果 + 证据。</p></div>
+      <div class="simple-arrow" aria-hidden="true">→</div>
+      <div class="flow-node review-node"><h3>评审与验收</h3><p>对照每一条约定标准<br>检查结果。</p></div>
+      <div class="simple-arrow accepted-arrow"><small>已验收</small><span aria-hidden="true">→</span></div>
+      <div class="flow-node"><h3>记录与提交</h3><p>更新共享记录。<br>创建范围明确的提交。</p></div>
+    </div>
+    <div class="correction-route"><span>需要纠正 · 诊断并重试同一任务</span></div>
+    <div class="repeat-route"><span>还有任务？返回就绪队列。</span></div>
+  </div>
+  <div class="phase-transition"><span>阶段成果已覆盖</span><b aria-hidden="true">↓</b></div>
+  <div class="phase closure-phase">
+    <div class="phase-caption"><span class="phase-mark">关闭阶段</span><p>关闭之前先处理未完成的需求。</p></div>
+    <div class="plan-lane">
+      <div class="flow-node"><h3>审查阶段</h3><p>检查范围、证据<br>以及任何获批的遗留事项。</p></div>
+      <div class="simple-arrow" aria-hidden="true">→</div>
+      <div class="flow-node"><h3>用户确认</h3><p>确认关闭<br>与交接内容。</p></div>
+      <div class="simple-arrow" aria-hidden="true">→</div>
+      <div class="flow-node"><h3>归档与提交</h3><p>保存该阶段的记录。<br>为下一个阶段做准备。</p></div>
+    </div>
+    <div class="next-stage"><span class="hand">↳ 下一阶段</span><p>新的工作记录，以当前架构与交接材料为依据。</p></div>
+  </div>
+  <div class="change-rule"><a href="#discussion"><strong>↶ 重大变更或新的歧义？回到讨论</strong></a><span>重新打开受影响的分支 → 确认修订后的理解 → 更新架构与任务卡 → 继续执行。清晰的小改动可直接复用已达成的决策。</span></div>
+</div>
+      <p class="checkpoint-note"><span class="commit-dot" aria-hidden="true"></span> 每次任务验收之后，以及每次工作流初始化、变更或归档操作之后，都创建一个 Git 检查点。</p>
+    </div></section>
+    <section class="context-section wrap" id="context">
+      <div class="section-heading"><div><p class="eyebrow">跨越上下文边界</p><h2>工作得以延续。</h2></div><p>新的执行者读取当前的契约与交付状态。恢复的会话会先将这些记录与仓库核对一致，然后再继续。</p></div>
+<div class="continuity-map">
+  <div class="context-card"><span class="node-label">执行者 A 完成</span><h3>任务结果</h3><p>改动的文件<br>检查与证据<br>提出的决策</p></div>
+  <div class="context-arrow"><span>主代理<br>评审并记录</span><i class="arrow-line"></i></div>
+  <div class="context-card context-records"><span class="node-label">持久状态</span><h3>项目记录 + Git</h3><p>已确认的需求与契约<br>已验收的工作与阻碍<br>证据与决策</p></div>
+  <div class="context-arrow"><span>与仓库<br>核对一致</span><i class="arrow-line"></i></div>
+  <div class="context-card"><span class="node-label">全新的执行者 / 会话</span><h3>上下文已恢复</h3><p>相关文档<br>一份完整的任务卡<br>依赖与检查</p></div>
+</div>
+      <p class="context-foot hand">架构与决策贯穿多个阶段。每个阶段保留自己的需求、任务、进度与证据。</p>
+    </section>
+    <section class="start-section" id="start"><div class="wrap start-grid">
+      <div><p class="eyebrow">从你的需求开始</p><h2>带上目标。<br>建立流程。</h2><p>安装该技能与执行者配置，然后带上你的需求。Maestro 会在规划工作之前与你一起澄清尚未确定的决策。</p><a class="button" href="https://github.com/JAY201368/maestro/blob/main/README.zh-CN.md#install">安装指南 ↗</a></div>
+      <div class="command-card"><span class="node-label">在 CODEX 会话中</span><code>$maestro</code><span class="hand">你的需求就是起点 ↗</span></div>
+    </div></section>
+  </main>
+  <footer class="wrap"><span>MAESTRO · 需求驱动的开发编排</span><a href="https://github.com/JAY201368/maestro">源码与文档 ↗</a></footer>
+</body>
+</html>
