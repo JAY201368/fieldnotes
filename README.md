@@ -20,28 +20,21 @@ Complex development often spans more work than a single conversation can retain.
 
 Maestro is a Codex orchestration skill that organizes this work into a software engineering process. The user's requirements drive the architecture, the development plan, and the acceptance criteria. Project documents preserve the current contracts and delivery state, so fresh subagents can pick up bounded tasks and the main agent can resume coordination from recorded evidence.
 
-```text
-USER REQUIREMENTS
-       │
-       ▼
-ARCHITECTURE → DEVELOPMENT PLAN → TIERED SUBAGENT DISPATCH
-                                      │
-                                      ▼
-NEXT STAGE ← CONFIRMED HANDOFF ← REVIEW & ACCEPTANCE
+## How the system fits together
 
-  Project records + Git checkpoints carry context across the process.
-```
+![Maestro system map — user requirements guide the main agent, which maintains architecture and task plans, dispatches fresh workers, reviews results, and updates shared project records.](docs/assets/system-map.png)
 
-## The control system
+The main agent maintains the architecture and dependency plan, dispatches bounded work, and accepts results. Shared project records provide the context for each fresh worker and resumed session.
 
-| Mechanism | What it establishes |
-| --- | --- |
-| **Requirements as the source** | Preserve the requested outcomes, agree stage scope, and trace each requirement to tasks and acceptance criteria. Scope changes require an explicit decision. |
-| **Architecture before implementation** | Define components, interfaces, data models, state invariants, and failure behavior. Update affected contracts before dependent work proceeds. |
-| **An executable development plan** | Build a dependency graph of bounded tasks. Each card specifies ownership, behavior, edge cases, acceptance criteria, and proportionate checks. |
-| **Tiered subagent dispatch** | Select a model and reasoning level for each task. Give it a fresh context and dispatch only when its prerequisites are evidenced. |
-| **Durable process records** | Keep progress, decisions, attempts, blockers, and acceptance evidence in project documents. Commit after each task acceptance and workflow initialization, change, or archival operation. |
-| **Explicit stage control** | Define closure criteria, reconcile unfinished requirements, obtain confirmation, and archive a complete handoff. The next stage gets its own working records. |
+## Follow one stage
+
+![Maestro stage flow — confirm requirements, design architecture, plan tasks, repeat the dispatch and acceptance loop, then review, confirm, and archive the stage. Correction and remaining-task loops return work to the appropriate step.](docs/assets/stage-flow.png)
+
+- **Plan** the requirements, architecture, and task graph before dispatch.
+- **Execute** dependency-ready tasks with a fresh worker each time. Diagnose failed acceptance and retry the same task. Record and commit accepted work, then select the next ready task.
+- **Close** the stage after reviewing its outcomes and resolving unfinished requirements through completion or an explicitly approved scope change. Confirm closure, archive the handoff, and plan the next stage.
+
+Create a Git checkpoint after each task acceptance and workflow initialization, change, or archival operation.
 
 ## How execution stays coordinated
 
