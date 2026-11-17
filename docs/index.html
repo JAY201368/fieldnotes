@@ -28,7 +28,7 @@
   <div class="map-source sketch-card">
     <span class="node-label">THE SOURCE OF EVERY DECISION</span>
     <h3>User requirements</h3>
-    <p>Outcomes · constraints · acceptance criteria</p>
+    <p>Discuss decisions → confirm shared understanding</p>
   </div>
   <div class="vertical-link"><span>guide design, dispatch &amp; acceptance</span></div>
   <div class="system-row">
@@ -71,10 +71,23 @@
     <section class="workflow-section" id="workflow"><div class="wrap">
       <div class="section-heading"><div><p class="eyebrow">THE GENERAL FLOW</p><h2>One stage, from brief to handoff.</h2></div><p>Read downward. Follow the loops when a task needs another pass or the queue still has work.</p></div>
 <div class="lifecycle diagram" id="lifecycle-map">
-  <div class="phase">
-    <div class="phase-caption"><span class="phase-mark">PLAN</span><p>Agree on the stage before dispatch.</p></div>
+  <div class="discussion-return-route" aria-hidden="true"></div>
+  <div class="phase discussion-phase" id="discussion">
+    <div class="phase-caption"><span class="phase-mark">DISCUSS TOGETHER</span><p>New project, new stage, or material requirement change.</p></div>
     <div class="plan-lane">
-      <div class="flow-node"><h3>Confirm requirements</h3><p>Stage goal, scope &amp; closure criteria</p></div>
+      <div class="flow-node"><h3>Explore the decisions</h3><p>Agent investigates facts.<br>User decides product tradeoffs.</p></div>
+      <div class="simple-arrow" aria-hidden="true">→</div>
+      <div class="flow-node"><h3>Ask in rounds</h3><p>Answer ready questions.<br>Unblock the next branches.</p></div>
+      <div class="simple-arrow" aria-hidden="true">→</div>
+      <div class="flow-node review-node"><h3>Confirm understanding</h3><p>Agree scope, scenarios,<br>constraints &amp; acceptance.</p></div>
+    </div>
+    <p class="discussion-note hand">Keep discussing until the relevant branches are resolved.</p>
+  </div>
+  <div class="phase-transition"><span>user confirms the shared understanding</span><b aria-hidden="true">↓</b></div>
+  <div class="phase">
+    <div class="phase-caption"><span class="phase-mark">PLAN</span><p>Build the plan from the confirmed requirements.</p></div>
+    <div class="plan-lane">
+      <div class="flow-node"><h3>Initialize the stage</h3><p>Record agreed requirements<br>and confirmation source.</p></div>
       <div class="simple-arrow" aria-hidden="true">→</div>
       <div class="flow-node"><h3>Design architecture</h3><p>Interfaces, invariants &amp; failure rules</p></div>
       <div class="simple-arrow" aria-hidden="true">→</div>
@@ -108,7 +121,7 @@
     </div>
     <div class="next-stage"><span class="hand">↳ next stage</span><p>New working records, informed by the current architecture and handoff.</p></div>
   </div>
-  <div class="change-rule"><strong>When requirements change</strong><span>Update the architecture and affected task cards, then resume dependent work.</span></div>
+  <div class="change-rule"><a href="#discussion"><strong>↶ Material change or new ambiguity? Return to discussion</strong></a><span>Reopen affected branches → confirm the revised understanding → update architecture and task cards → resume. Clear small edits reuse agreed decisions.</span></div>
 </div>
       <p class="checkpoint-note"><span class="commit-dot" aria-hidden="true"></span> Git checkpoint after each accepted task and each workflow initialization, change, or archival operation.</p>
     </div></section>
@@ -117,14 +130,14 @@
 <div class="continuity-map">
   <div class="context-card"><span class="node-label">WORKER A FINISHES</span><h3>Task result</h3><p>Changed files<br>Checks &amp; evidence<br>Decisions proposed</p></div>
   <div class="context-arrow"><span>main agent<br>reviews &amp; records</span><i class="arrow-line"></i></div>
-  <div class="context-card context-records"><span class="node-label">DURABLE STATE</span><h3>Project records + Git</h3><p>Current contracts<br>Accepted work &amp; blockers<br>Evidence &amp; decisions</p></div>
+  <div class="context-card context-records"><span class="node-label">DURABLE STATE</span><h3>Project records + Git</h3><p>Confirmed requirements &amp; contracts<br>Accepted work &amp; blockers<br>Evidence &amp; decisions</p></div>
   <div class="context-arrow"><span>reconcile with<br>the repository</span><i class="arrow-line"></i></div>
   <div class="context-card"><span class="node-label">FRESH WORKER / SESSION</span><h3>Context restored</h3><p>Relevant documents<br>A complete task card<br>Dependencies &amp; checks</p></div>
 </div>
       <p class="context-foot hand">Architecture + decisions span stages. Each stage keeps its own requirements, tasks, progress, and evidence.</p>
     </section>
     <section class="start-section" id="start"><div class="wrap start-grid">
-      <div><p class="eyebrow">START WITH YOUR REQUIREMENTS</p><h2>Bring the goal.<br>Build the process.</h2><p>Install the skill and profiles, then describe your requirements and existing project documents.</p><a class="button" href="https://github.com/JAY201368/maestro#install">Installation guide ↗</a></div>
+      <div><p class="eyebrow">START WITH YOUR REQUIREMENTS</p><h2>Bring the goal.<br>Build the process.</h2><p>Install the skill and profiles, then bring your requirements. Maestro clarifies the open decisions with you before planning the work.</p><a class="button" href="https://github.com/JAY201368/maestro#install">Installation guide ↗</a></div>
       <div class="command-card"><span class="node-label">IN A CODEX CHAT</span><code>$maestro</code><span class="hand">your requirements are the starting point ↗</span></div>
     </div></section>
   </main>

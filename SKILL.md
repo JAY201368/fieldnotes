@@ -1,11 +1,11 @@
 ---
 name: maestro
-description: Plan and deliver software in explicit development stages, with requirement-linked task cards, fresh task workers, dependency-aware parallel execution, proportionate acceptance, and confirmed stage archival. Use for staged project planning, implementation orchestration, resuming delivery, or transitioning an existing project to its next stage.
+description: Clarify user requirements through structured discussion, then plan and deliver software in explicit development stages, with requirement-linked task cards, fresh task workers, dependency-aware parallel execution, proportionate acceptance, and confirmed stage archival. Use for staged project planning, implementation orchestration, resuming delivery, or transitioning an existing project to its next stage.
 ---
 
 # Maestro
 
-Maintain an agreed stage goal, complete task contracts, and evidence sufficient to accept the requested outcome. The main agent owns planning, dispatch, integration, shared records, and acceptance. Every task gets a fresh worker context. Continue through the authorized milestone without silently reducing scope.
+Maintain an agreed stage goal, complete task contracts, and evidence sufficient to accept the requested outcome. The main agent owns requirements discussion, planning, dispatch, integration, shared records, and acceptance. Every implementation task gets a fresh worker context. Continue through the authorized milestone without silently reducing scope.
 
 After completing each task acceptance or each workflow initialization, change, or archival operation, the main agent must create one scoped Git commit containing the corresponding changes and workflow records, preserving unrelated worktree edits.
 
@@ -15,12 +15,15 @@ Inspect repository instructions and the worktree, preserving unrelated changes. 
 
 Choose the applicable operation:
 
-- **Plan a stage** when starting a project or a user-confirmed new stage. Agree goals, included requirements and closure criteria before dispatch.
-- **Revise within a stage** for changes serving its agreed goals. Amend existing requirements, architecture and affected cards. Ask the user to allocate work outside those goals to this or a later stage.
+- **Clarify requirements** for a new project, new stage, or a change affecting goals, scope, architecture or acceptance. Complete the discussion and obtain confirmation before formal stage initialization or affected orchestration.
+- **Plan a stage** from the confirmed understanding. Design the architecture and task graph, preserving the agreed goals, scope and closure criteria.
+- **Revise within a stage** for changes serving its agreed goals. Amend existing requirements, architecture and affected cards. Ask the user to allocate work outside those goals to this or a later stage. Reopen affected discussion branches for material changes; reuse confirmed conclusions for clear small edits.
 - **Execute or resume** when the stage contracts are stable. Reconcile recorded completion with current files and evidence, then dispatch ready tasks.
 - **Close and transition** when the stage outcome is reached or the user explicitly approves a scope adjustment. Prepare closure and handoff for confirmation, archive after confirmation, then plan the new stage.
 
-For document setup, adaptation or closure, read [references/document-contracts.md](references/document-contracts.md). Use the bootstrap script and templates as scaffolding, filling relevant placeholders before dispatch. User requirements and current repository instructions remain binding. Architecture defines technical contracts; cards implement those contracts. Progress and historical records cannot override them. Resolve material conflicts before dependent implementation.
+Before a requirements discussion, read [references/requirements-discussion.md](references/requirements-discussion.md). Its built-in grilling protocol uses dependency-aware question rounds and explicit confirmation of shared understanding. Reuse applicable prior answers and authorization. Stable execution/resumption proceeds from current contracts; newly discovered requirement ambiguity reopens only the affected branches.
+
+For document setup, adaptation or closure, read [references/document-contracts.md](references/document-contracts.md). After shared understanding is confirmed, use the bootstrap script and templates as scaffolding, recording the confirmed requirements before architecture and task planning and filling relevant placeholders before dispatch. User requirements and current repository instructions remain binding. Architecture defines technical contracts; cards implement those contracts. Progress and historical records cannot override them. Resolve material conflicts before dependent implementation.
 
 ## Plan executable task contracts
 
@@ -28,17 +31,17 @@ Each card links its source requirements and specifies ownership, entry points, b
 
 Before dispatch, manually check requirement coverage and whether a fresh worker could implement the card without guessing product behavior. Structural validation detects missing fields and dependencies, but semantic completeness remains the main agent's responsibility. Add an independent deliverable as a separate card instead of concealing scope growth.
 
-If implementation reveals a contract gap, pause affected work, resolve the decision, update architecture and affected cards, and then continue. Obtain user input for product scope, authorization or materially ambiguous behavior. Reversible technical choices within agreed requirements belong to the main agent.
+If design or implementation reveals a requirement ambiguity, pause affected work, return to the relevant discussion branches and confirm the revised understanding. For a technical contract gap within agreed requirements, resolve the decision, update architecture and affected cards, and then continue. Obtain user input for product scope, authorization or materially ambiguous behavior. Reversible technical choices within agreed requirements belong to the main agent.
 
 ## Route and dispatch workers
 
-Read [references/worker-routing.md](references/worker-routing.md) before selecting a profile. Record the profile and rationale in the task card, and reassess at dispatch using current evidence. Keep the main session's model and reasoning unchanged.
+Read [references/worker-routing.md](references/worker-routing.md) before selecting a profile. For implementation, record the profile and rationale in the task card and reassess at dispatch using current evidence. Pre-confirmation read-only investigations use the bounded assignment and findings described in the discussion reference. Keep the main session's model and reasoning unchanged.
 
-Prefer the exact installed custom role with `fork_turns: "none"`. Supply the absolute repository root, mapped document paths, complete card, instantiated prompt, explicit owned files/modules, exclusions, dependency evidence, selected model/effort and verification plan. Tell workers they share the worktree and must preserve others' edits.
+Prefer the exact installed custom role with `fork_turns: "none"`. For implementation, supply the absolute repository root, mapped document paths, complete card, instantiated prompt, explicit owned files/modules, exclusions, dependency evidence, selected model/effort and verification plan. Tell workers they share the worktree and must preserve others' edits.
 
 If a role is not exposed or its exposed instructions are stale, use a fresh general worker with the exact model/effort and the installed profile's full instructions when overrides are supported. Never assume an override changes a fixed custom role. If the exact configuration cannot be dispatched, report the capability gap and seek a supported route. If no subagent mechanism exists, explain the limitation and implement directly only with user authorization. Never substitute user-owned sidebar chats for workers. Report configured settings separately from observed runtime metadata.
 
-A worker owns exactly one task ID and may not delegate. Same-task corrections may return to that worker while it is available, including after its completion report and before acceptance. Changing profile requires ending the old worker's activity and creating a fresh worker. Accepted, abandoned or blocked workers are retired; reopened tasks get new workers.
+An implementation worker owns exactly one task ID and may not delegate. Same-task corrections may return to that worker while it is available, including after its completion report and before acceptance. Changing profile requires ending the old worker's activity and creating a fresh worker. Accepted, abandoned or blocked workers are retired; reopened tasks get new workers.
 
 ## Schedule independent work
 
@@ -80,6 +83,6 @@ Review all stage requirements against accepted tasks and valid evidence. Supplem
 
 Prepare a handoff covering delivered capabilities, contract/data/environment changes, known issues, unfinished requirements and their approved destinations, evidence and its remaining applicability, and recommendations for next-stage planning. Present the stage summary for user confirmation. Only after confirmation run archival as documented in the reference. Preserve the full stage records and project-level snapshots. Resume an interrupted archive using the same stage identity rather than overwriting history.
 
-The new stage receives a new requirements/task/progress/acceptance/prompt set. Project architecture, decisions and instructions continue as the current system context. Review every inherited issue and deferred requirement explicitly during new-stage planning.
+The new stage receives a new requirements/task/progress/acceptance/prompt set. Project architecture, decisions and instructions continue as the current system context. Review every inherited issue and deferred requirement explicitly during the new stage’s requirements discussion, confirm shared understanding, then initialize and plan that stage.
 
 Report the delivered outcome, changed files, verification actually performed, unfinished items and next step. Do not claim runtime model validation from a parsed configuration or structural validation as product acceptance.

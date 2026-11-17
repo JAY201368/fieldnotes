@@ -14,7 +14,7 @@ None. Record task ID, worker identity/profile, owned files, and material correct
 
 ## Issues and decisions needed
 
-Complete and confirm the stage plan.
+Complete the stage plan from confirmed requirements. Record any reopened discussion branches, pending investigations and decisions awaiting user input here.
 
 ## Next ready tasks
 

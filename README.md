@@ -20,6 +20,12 @@ Complex development often spans more work than a single conversation can retain.
 
 Maestro is a Codex orchestration skill that organizes this work into a software engineering process. The user's requirements drive the architecture, the development plan, and the acceptance criteria. Project documents preserve the current contracts and delivery state, so fresh subagents can pick up bounded tasks and the main agent can resume coordination from recorded evidence.
 
+## Clarify the requirements together
+
+Maestro includes a grilling-style discussion before a new project, stage, or material requirement change. It maps dependent decisions, asks every currently answerable question in a round, and recommends an answer for each. Fresh investigators look up repository facts while the user decides product tradeoffs.
+
+Once the relevant branches are resolved, Maestro summarizes the shared understanding for explicit user confirmation. That agreement drives initialization, architecture design and task planning. Confirmed conclusions carry into small changes and resumed work; new ambiguity reopens the affected branches. The protocol is bundled with Maestro.
+
 ## How the system fits together
 
 ![Maestro system map — user requirements guide the main agent, which maintains architecture and task plans, dispatches fresh workers, reviews results, and updates shared project records.](docs/assets/system-map.png)
@@ -28,9 +34,10 @@ The main agent maintains the architecture and dependency plan, dispatches bounde
 
 ## Follow one stage
 
-![Maestro stage flow — confirm requirements, design architecture, plan tasks, repeat the dispatch and acceptance loop, then review, confirm, and archive the stage. Correction and remaining-task loops return work to the appropriate step.](docs/assets/stage-flow.png)
+![Maestro stage flow — discuss requirements, confirm shared understanding, initialize the stage, design architecture, plan tasks, repeat the dispatch and acceptance loop, then review, confirm, and archive the stage. Correction and remaining-task loops return work to the appropriate step.](docs/assets/stage-flow.png)
 
-- **Plan** the requirements, architecture, and task graph before dispatch.
+- **Discuss and confirm** the requirements before initialization. Resolve the relevant decision tree and confirm the shared understanding.
+- **Plan** the architecture and task graph from that agreement before dispatch.
 - **Execute** dependency-ready tasks with a fresh worker each time. Diagnose failed acceptance and retry the same task. Record and commit accepted work, then select the next ready task.
 - **Close** the stage after reviewing its outcomes and resolving unfinished requirements through completion or an explicitly approved scope change. Confirm closure, archive the handoff, and plan the next stage.
 
@@ -51,6 +58,8 @@ Worker selection considers complexity, uncertainty, and the consequences of fail
 A complex task can start with a stronger configuration. Failed acceptance first triggers diagnosis of the requirement, environment, implementation, or reasoning issue. See the [routing guide](references/worker-routing.md) for selection and correction rules.
 
 ## Continue across context boundaries
+
+The requirements record preserves the confirmed discussion outcome and its approval source. Unfinished discussions can carry forward through a concise handoff of settled decisions, open questions and pending investigations.
 
 A fresh worker receives the relevant project documents, a complete task card, owned files, dependency evidence, and its verification plan. A resumed main agent reconciles the records with the current repository before scheduling further work.
 
@@ -79,7 +88,7 @@ Start a new chat after installing or updating the profiles so Codex can discover
 $maestro
 ```
 
-Describe the outcome you need and provide existing requirements or project documents. Maestro can adapt to the repository's document paths. Available models and effective runtime settings depend on your Codex environment.
+Describe the outcome you need and provide existing requirements or project documents. Maestro starts by clarifying unresolved decisions with you and confirming the shared understanding. Maestro can adapt to the repository's document paths. Available models and effective runtime settings depend on your Codex environment.
 
 ## Repository contents
 

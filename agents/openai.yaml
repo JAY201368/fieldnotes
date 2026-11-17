@@ -1,4 +1,4 @@
 interface:
   display_name: "Maestro"
-  short_description: "按开发阶段规划、独立任务并行交付、复用验收证据并归档交接"
-  default_prompt: "Use $maestro to plan the current development stage, dispatch independent tasks to fresh workers, and accept work with proportionate reusable evidence."
+  short_description: "通过分轮讨论澄清需求，再进行阶段规划、分级调度、验收与归档交接"
+  default_prompt: "Use $maestro to clarify my requirements, confirm our shared understanding, then plan and deliver the stage with fresh workers and proportionate acceptance."

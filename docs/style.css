@@ -271,3 +271,14 @@ footer { display: flex; align-items: center; justify-content: space-between; pad
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
+
+/* Requirements discussion precedes formal planning. */
+.discussion-phase { background: #fff6e7; border: 1px dashed var(--orange); border-radius: 7px 3px 6px 4px; padding: 20px; }
+.discussion-note { margin-top: 18px; text-align: center; font-size: 19px; }
+.change-rule { flex-wrap: wrap; }
+.change-rule a { color: var(--orange); }
+.change-rule span { flex: 1 1 480px; }
+
+.lifecycle { position: relative; }
+.discussion-return-route { position: absolute; left: 14px; top: 52px; bottom: 50px; width: 12px; border-left: 1px dashed var(--orange); border-bottom: 1px dashed var(--orange); border-radius: 0 0 0 6px; }
+.discussion-return-route::before { content: ''; position: absolute; top: 0; left: -4px; width: 6px; height: 6px; border-top: 1px solid var(--orange); border-left: 1px solid var(--orange); transform: rotate(45deg); }

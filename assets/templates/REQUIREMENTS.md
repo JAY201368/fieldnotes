@@ -2,7 +2,15 @@
 
 ## Confirmed stage goal
 
-TODO agreed outcome and user confirmation.
+TODO agreed outcome.
+
+## Confirmed discussion outcome
+
+TODO summarize key scenarios, relevant failure/boundary behavior, constraints, agreed scope choices, and observable acceptance. Preserve explicit user requirements and link their sources.
+
+## Confirmation basis
+
+TODO identify the user confirmation source and the exact summary/scope it covers. Reuse applicable existing confirmation. Record revised confirmation when material changes reopen discussion.
 
 ## Source and scope
 

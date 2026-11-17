@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Initialize or resume a stage, preserving existing documents."""
+"""Initialize or resume stage scaffolding after confirmed requirements discussion, preserving existing documents."""
 from __future__ import annotations
 
 import argparse
@@ -82,7 +82,7 @@ def main() -> int:
                 atomic_text(destination, contents[key])
         if not args.dry_run:
             write_index(repo, fields)
-        print("Review all placeholders and confirm stage scope before dispatch")
+        print("Record the confirmed discussion outcome, then complete architecture and task contracts before dispatch")
         return 0
     except (ValueError, OSError, json.JSONDecodeError) as error:
         print(f"ERROR {error}")

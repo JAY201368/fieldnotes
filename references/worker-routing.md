@@ -16,13 +16,13 @@
 
 These are routing defaults, not benchmark claims. Select the lowest-cost configuration sufficient for the actual task, weighing complexity, uncertainty, error consequences and known performance. Luna stays at max. Sol uses gpt-6.1-sol. Astra may be selected on first dispatch at any installed level. No lower-profile failure is required. Ultra profiles are outside this configuration.
 
-Record **Worker** and **Routing rationale** in the card during planning. Reassess before dispatch and update them if current evidence warrants another choice. Explain why greater reasoning depth or a different model is useful for this task; file count or task title alone is insufficient. Investigation and design tasks may use these profiles with explicitly read-only ownership and concrete outputs.
+For implementation tasks, record **Worker** and **Routing rationale** in the card during planning. Reassess before dispatch and update them if current evidence warrants another choice. Explain why greater reasoning depth or a different model is useful for this task; file count or task title alone is insufficient. Investigation and design tasks may use these profiles with explicitly read-only ownership and concrete outputs. Before stage initialization, give each fact investigation a distinct identifier, bounded question, relevant paths, profile/rationale and required findings. Its assignment replaces the implementation card and prompt template. Retain relevant findings in the conversation or discussion handoff until confirmed requirements can incorporate them.
 
 ## Correction and escalation
 
 Diagnose requirement, environment, implementation and reasoning failures separately. A small error normally receives a focused correction on the same task/profile. Two unsuccessful corrections for the same cause require a main-agent reassessment and a changed approach or configuration. There is no mandatory linear ladder between models or efforts.
 
-Switch profile only in a fresh worker after ending the previous worker's activity. Supply the original contract, current worktree state, failed evidence and revised approach. The main agent records the attempt and rationale in stage progress/acceptance records without duplicating long logs. Never reuse a worker for another task ID.
+Switch profile only in a fresh worker after ending the previous worker's activity. Supply the original contract, current worktree state, failed evidence and revised approach. For implementation, the main agent records the attempt and rationale in stage progress/acceptance records without duplicating long logs. Pre-confirmation investigations retain this information with their discussion findings. Never reuse a worker for another task ID.
 
 ## Runtime configuration
 

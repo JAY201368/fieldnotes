@@ -31,7 +31,7 @@ Decisions record durable choices, reasons and consequences. Retain the history o
 
 ## Stage-level documents
 
-- **REQUIREMENTS** — confirmed goal, source links and requirement IDs, included outcomes, explicit exclusions, closure criteria, task coverage and inherited issues. Each inherited item gets a disposition during planning.
+- **REQUIREMENTS** — confirmed discussion summary and confirmation basis (the user message or other verifiable source and the scope it covers), key scenarios, boundaries, constraints, observable acceptance, confirmed goal, source links and requirement IDs, included outcomes, explicit exclusions, closure criteria, task coverage and inherited issues. Each inherited item gets a disposition during planning.
 - **TASKS** — a dependency DAG of independently acceptable slices. Use stable task IDs within the stage and stage-qualified IDs across stages. Cards include Dependencies, Worker, Routing rationale, Requirements, Scope, Behavior, Boundaries, Acceptance and Verification. Behavior covers entry points, inputs/outputs and applicable states. Boundaries covers errors, concurrency, exclusions and relevant edge cases. Each acceptance item maps to a check or inspection. Keep simple tasks short but concrete.
 - **PROGRESS** — current observable system state, accepted work, active task ownership, attempts/blockers, pending decisions and next ready tasks. Record worker identity/profile for lifecycle traceability. The main agent alone updates shared records.
 - **ACCEPTANCE** — evidence IDs, task/criterion coverage, exact command or inspection, result, tested revision or file state, relevant environment, and invalidation conditions. Record why reused evidence remains valid and why any rerun was needed. A completed task's Evidence field references its evidence record. Preserve meaningful failures and skips.
@@ -59,6 +59,12 @@ After acceptance add **Evidence** with the ledger reference and concise actual r
 
 The validator checks structure and declared evidence fields. Manually check semantic completeness, all requirement-to-task coverage, public contracts, proof applicability and actual approval. Passing a script does not establish those facts.
 
+## Discussion before setup
+
+Follow [requirements-discussion.md](requirements-discussion.md) for new projects/stages and material changes. Confirm the shared understanding before formal initialization, architecture design and task planning. Reuse relevant prior confirmations. Active-stage unresolved questions belong in progress; a new project or uninitialized next stage stays in conversation until confirmed. An archived stage's progress remains immutable; save any needed discussion handoff separately. Save a concise discussion handoff only when continuity across contexts requires it, then incorporate the confirmed outcome into requirements.
+
+Bootstrap is a scaffolding utility. Its invocation assumes the main agent has obtained the required confirmation; script success does not establish approval. Existing documents remain usable without a retroactive interview. Reopen affected branches when a new ambiguity or material change appears.
+
 ## Setup and within-stage changes
 
 ```bash
@@ -68,7 +74,7 @@ python <skill-dir>/scripts/validate_workflow.py --repo <root>
 
 Bootstrap creates missing files and retains existing content. Use `--dry-run` to inspect destinations and `--paths <json-file>` to supply repository-relative document overrides when adapting a project. For example, a JSON object can contain `{"Architecture": "docs/ARCHITECTURE.md", "Decisions": "docs/DECISIONS.md", "Tasks": "existing/TASKS.md"}`. Omitted keys use defaults. Review the proposed map to reuse all established authoritative documents. The bootstrap does not move existing documents or change an active map implicitly. Replace scaffold placeholders before dispatch. Stage requirements may link an existing root requirement instead of copying it.
 
-Within a stage, amend its existing documents. Update the affected architecture, dependency edges and evidence validity when requirements change. Do not create a new stage for each small fix. After task-structure changes run the focused structural validator once; reuse that result until relevant structure changes.
+Within a stage, discuss and confirm material requirement changes before affected planning or implementation, then amend its existing documents. Clear small changes reuse the applicable confirmed understanding. Update the affected architecture, dependency edges and evidence validity when requirements change. Do not create a new stage for each small fix. After task-structure changes run the focused structural validator once; reuse that result until relevant structure changes.
 
 ## Closure, archival and recovery
 
@@ -78,6 +84,6 @@ Within a stage, amend its existing documents. Update the affected architecture, 
 4. Present the complete stage summary and obtain user confirmation to close/archive. Prior authorization is sufficient if it explicitly covers this concrete closure.
 5. Run `python <skill-dir>/scripts/archive_stage.py --repo <root> --handoff <prepared-handoff.md> --confirmed` after confirmation. Use `--dry-run` to inspect closure readiness. `--confirmed` represents obtained approval; it must never be supplied as a substitute for approval. Include the prepared handoff. The archive preserves mapped stage documents, the full standard stage directory including evidence attachments, the original path map and snapshots of project context. Snapshots live under `archive/<stage>/files/<original-repository-relative-path>`, with `HANDOFF.md` and a hash manifest alongside them. Source documents remain in place; the current pointer switches to archived snapshots. The next stage uses new stage-document paths while preserving the original global-document paths.
 6. If interrupted, rerun for the same stage with the same handoff. Inspect any conflict instead of replacing historical content. Keep closure recoverable and the current-stage pointer accurate.
-7. Plan a new, uniquely named stage after confirmation to enter it. Bootstrap its own document set. Review every handoff item and map it to a requirement, agreed exclusion or explicit unresolved planning decision. Project-level documents continue in place.
+7. Discuss the new stage after confirmation to enter it. Review every handoff item and resolve its destination with the user. Confirm shared understanding before bootstrapping a new, uniquely named stage with its own document set, then design its architecture and task graph. Project-level documents continue in place.
 
 Do not treat all checked boxes as sufficient closure evidence. A user-approved transfer preserves an unmet requirement and its destination. Archive history stays immutable; corrective work belongs in the active stage with a reference to the closed record.
