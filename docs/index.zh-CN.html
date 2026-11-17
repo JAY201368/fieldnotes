@@ -4,25 +4,29 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="了解 Maestro 如何把用户需求、架构、任务规划、分层子代理、共享记录与阶段控制连接起来。">
-  <meta name="theme-color" content="#f6f3e8">
+  <meta name="theme-color" content="#efe4cb">
   <title>Maestro — 开发编排图解指南</title>
   <link rel="alternate" hreflang="en" href="index.html">
   <link rel="alternate" hreflang="zh-CN" href="index.zh-CN.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Gaegu:wght@400;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Gaegu:wght@400;700&family=Instrument+Serif:ital@0;1&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <style>
     :root {
       --sans: 'DM Sans', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
       --hand: 'Gaegu', 'Kaiti SC', 'STKaiti', 'KaiTi', cursive;
       --mono: 'Space Mono', 'PingFang SC', 'Hiragino Sans GB', monospace;
+      --display: 'Instrument Serif', 'Songti SC', 'STSong', 'Noto Serif SC', serif;
     }
-    body { line-height: 1.7; }
-    h1 { letter-spacing: -.03em; }
-    .section-heading h2, .start-section h2 { letter-spacing: -.02em; }
-    .orchestrator h3, .context-card h3, .routing-grid h4, .map-source h3, .design-stack h3 { letter-spacing: 0; }
+    body { line-height: 1.68; }
+    h1 { letter-spacing: -.01em; }
+    h1 span { font-style: normal; }
+    .section-heading h2, .start-section h2 { letter-spacing: -.01em; }
+    .orchestrator h3, .context-card h3, .routing-grid h4, .map-source h3, .design-stack h3, .diagram-heading h2, .routing-header h3 { letter-spacing: 0; }
     .flow-node h3 { letter-spacing: 0; }
+    #system-map { --fig: "图 1 — 系统结构"; }
+    #lifecycle-map { --fig: "图 2 — 阶段流程"; }
     @media (min-width: 651px) {
       .system-row { grid-template-columns: 1fr 82px 1.14fr 122px 1fr; }
       .relation span { font-size: 13px; }
@@ -41,7 +45,7 @@
     <section class="overview wrap" id="system">
       <div class="intro-heading">
         <div><p class="eyebrow">一个 CODEX 编排技能</p><h1>复杂的工作，<br><span>有序协同。</span></h1></div>
-        <div class="intro-copy"><p>用户的需求驱动架构、计划以及每一项任务。Maestro 把它们连接成一套能够跨越全新上下文持续推进的流程。</p><a class="text-link" href="#workflow">跟随一个阶段从开始走到结束 ↓</a></div>
+        <div class="intro-copy"><p>用户的需求驱动架构、计划以及每一项任务。Maestro 把它们连接成一套能够跨越全新上下文持续推进的流程。</p><a class="text-link" href="#workflow">跟随一个阶段从开始走到结束 ↓</a><span class="hero-stamp"><b>MAESTRO</b><em>需求 → 规划 → 构建</em></span></div>
       </div>
       <div class="diagram-heading"><h2>系统如何协同运作</h2><span class="hand">需求引领工作 ↙</span></div>
 <div class="system-map diagram" id="system-map">

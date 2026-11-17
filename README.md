@@ -30,13 +30,13 @@ Once the relevant branches are resolved, Maestro summarizes the shared understan
 
 ## How the system fits together
 
-![Maestro system map — user requirements guide the main agent, which maintains architecture and task plans, dispatches fresh workers, reviews results, and updates shared project records.](docs/assets/system-map.png)
+![Maestro system map — user requirements guide the main agent, which maintains architecture and task plans, dispatches fresh workers, reviews results, and updates shared project records.](docs/assets/system-map.jpg)
 
 The main agent maintains the architecture and dependency plan, dispatches bounded work, and accepts results. Shared project records provide the context for each fresh worker and resumed session.
 
 ## Follow one stage
 
-![Maestro stage flow — discuss requirements, confirm shared understanding, initialize the stage, design architecture, plan tasks, repeat the dispatch and acceptance loop, then review, confirm, and archive the stage. Correction and remaining-task loops return work to the appropriate step.](docs/assets/stage-flow.png)
+![Maestro stage flow — discuss requirements, confirm shared understanding, initialize the stage, design architecture, plan tasks, repeat the dispatch and acceptance loop, then review, confirm, and archive the stage. Correction and remaining-task loops return work to the appropriate step.](docs/assets/stage-flow.jpg)
 
 - **Discuss and confirm** the requirements before initialization. Resolve the relevant decision tree and confirm the shared understanding.
 - **Plan** the architecture and task graph from that agreement before dispatch.
