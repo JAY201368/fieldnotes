@@ -110,7 +110,13 @@ h1, h2, h3, h4, p { margin: 0; }
   letter-spacing: .02em;
   color: var(--green-700);
 }
-.brand-mark { font-size: 32px; line-height: 1; color: var(--green-700); }
+.brand-mark {
+  width: 38px;
+  height: 38px;
+  flex: none;
+  color: var(--green-700);
+  overflow: visible;
+}
 
 nav { display: flex; gap: 26px; }
 nav a {
