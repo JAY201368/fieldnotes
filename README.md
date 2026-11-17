@@ -4,9 +4,9 @@
 
 # Maestro
 
-Big ideas deserve a clearer path.
+**Requirement-driven orchestration for complex software development.**
 
-**A Codex skill for carrying a software idea from a shared plan to an evidenced delivery.**
+Architecture, development planning, tiered subagents, and stage control — connected through durable project records.
 
 [Explore the illustrated guide ↗](https://jay201368.github.io/maestro/) &nbsp; · &nbsp; [Install](#install) &nbsp; · &nbsp; [Read the skill](SKILL.md)
 
@@ -14,37 +14,65 @@ Big ideas deserve a clearer path.
 
 ---
 
-### A little structure goes a long way
+## Start with the user's requirements
 
-Projects change as they grow. This skill helps Codex keep the goal, the work, and the evidence connected across development stages. It turns requirements into task cards that a fresh worker can understand, then carries the resulting knowledge into the next stage.
+Complex development often spans more work than a single conversation can retain. Architecture decisions, dependencies, acceptance criteria, and unfinished work all need to survive context changes.
+
+Maestro is a Codex orchestration skill that organizes this work into a software engineering process. The user's requirements drive the architecture, the development plan, and the acceptance criteria. Project documents preserve the current contracts and delivery state, so fresh subagents can pick up bounded tasks and the main agent can resume coordination from recorded evidence.
 
 ```text
-  THE IDEA          THE PLAN           THE WORK          THE HANDOFF
-  requirement  ──▶  stage & tasks  ──▶  build + check  ──▶  archive & continue
-       ✎                 ▤                  ✓                    ↗
+USER REQUIREMENTS
+       │
+       ▼
+ARCHITECTURE → DEVELOPMENT PLAN → TIERED SUBAGENT DISPATCH
+                                      │
+                                      ▼
+NEXT STAGE ← CONFIRMED HANDOFF ← REVIEW & ACCEPTANCE
+
+  Project records + Git checkpoints carry context across the process.
 ```
 
-| | The idea | In practice |
+## The control system
+
+| Mechanism | What it establishes |
+| --- | --- |
+| **Requirements as the source** | Preserve the requested outcomes, agree stage scope, and trace each requirement to tasks and acceptance criteria. Scope changes require an explicit decision. |
+| **Architecture before implementation** | Define components, interfaces, data models, state invariants, and failure behavior. Update affected contracts before dependent work proceeds. |
+| **An executable development plan** | Build a dependency graph of bounded tasks. Each card specifies ownership, behavior, edge cases, acceptance criteria, and proportionate checks. |
+| **Tiered subagent dispatch** | Select a model and reasoning level for each task. Give it a fresh context and dispatch only when its prerequisites are evidenced. |
+| **Durable process records** | Keep progress, decisions, attempts, blockers, and acceptance evidence in project documents. Commit after each task acceptance and workflow initialization, change, or archival operation. |
+| **Explicit stage control** | Define closure criteria, reconcile unfinished requirements, obtain confirmation, and archive a complete handoff. The next stage gets its own working records. |
+
+## How execution stays coordinated
+
+The main agent owns architecture decisions, scheduling, shared records, integration, and final acceptance. Each worker owns one task and reports its result against the agreed criteria. Independent tasks can run in parallel, with a default limit of two implementation workers. Coupled work follows its dependency order.
+
+Worker selection considers complexity, uncertainty, and the consequences of failure. The bundled configurations are:
+
+| Model | Reasoning levels | Typical work |
 | --- | --- | --- |
-| ✳ | **Plan in stages** | Agree on a goal and closure criteria. Give each stage its own requirements, tasks, progress, and acceptance records. |
-| ▧ | **Make tasks legible** | Connect each card to a requirement and describe its behavior, boundaries, dependencies, and checks. |
-| ↗ | **Give work a fresh context** | Assign each task to a dedicated worker. Independent tasks can run in parallel while the main agent owns integration. |
-| ✓ | **Keep useful evidence** | Choose verification in proportion to risk and reuse evidence while it remains applicable. |
-| → | **Leave a useful handoff** | After confirmation, archive the stage with its context and carry open items into planning for the next one. |
+| Luna | max | Bounded routine implementation and focused investigation |
+| Sol | medium · high · xhigh · max | Defined implementation, integration, state handling, and difficult debugging |
+| Astra | medium · high · xhigh · max | Design uncertainty, cross-system reasoning, and coupled architectural problems |
 
-## How a stage moves
+A complex task can start with a stronger configuration. Failed acceptance first triggers diagnosis of the requirement, environment, implementation, or reasoning issue. See the [routing guide](references/worker-routing.md) for selection and correction rules.
 
-1. **Align** — agree on the outcome, scope, and closure criteria.
-2. **Shape** — connect requirements to task cards with observable acceptance criteria.
-3. **Build** — choose a worker profile for each task and dispatch dependency-ready work.
-4. **Accept** — review the result and its evidence against each criterion.
-5. **Hand off** — confirm closure, archive the stage, and plan the next chapter.
+## Continue across context boundaries
 
-The main agent maintains shared workflow records and accepts work. The default is up to two independent implementation workers at a time, subject to runtime capacity. The nine bundled profiles provide Luna, Sol, and Astra configurations at different reasoning levels. See the [worker routing guide](references/worker-routing.md) for the selection rules.
+A fresh worker receives the relevant project documents, a complete task card, owned files, dependency evidence, and its verification plan. A resumed main agent reconciles the records with the current repository before scheduling further work.
+
+| Persistent context | Purpose |
+| --- | --- |
+| Architecture and decisions | Carry current system contracts and durable rationale across stages |
+| Stage requirements and tasks | Preserve scope, requirement coverage, dependencies, and acceptance criteria |
+| Progress and acceptance records | Track what is complete, active, blocked, and supported by evidence |
+| Archived stages and handoffs | Preserve delivered behavior, changes, open items, and inputs to the next stage |
+
+Verification follows the risk of the change. Applicable evidence can be reused across worker review and stage acceptance. The main agent reviews requirement coverage and evidence validity alongside structural checks. See the [document contracts](references/document-contracts.md) for the complete lifecycle.
 
 ## Install
 
-Clone the repository into your Codex skills directory, then install the worker profiles:
+Clone the repository into your Codex skills directory, then install the worker profiles.
 
 ```bash
 git clone https://github.com/JAY201368/maestro.git ~/.codex/skills/maestro
@@ -58,25 +86,21 @@ Start a new chat after installing or updating the profiles so Codex can discover
 $maestro
 ```
 
-Then describe the project, the outcome you want, and any existing requirements or project documents. The skill can adapt to an existing repository's document paths. Available models and effective runtime settings depend on your Codex environment.
+Describe the outcome you need and provide existing requirements or project documents. Maestro can adapt to the repository's document paths. Available models and effective runtime settings depend on your Codex environment.
 
-## Inside the notebook
+## Repository contents
 
 | Path | What it contains |
 | --- | --- |
-| [SKILL.md](SKILL.md) | The stage planning, execution, acceptance, and closure workflow |
+| [SKILL.md](SKILL.md) | The orchestration workflow and control rules |
 | [references/](references/) | Document contracts and worker routing guidance |
-| [assets/templates/](assets/templates/) | Starter documents for a stage workflow |
+| [assets/templates/](assets/templates/) | Starter documents for stage planning and execution |
 | [assets/worker-profiles/](assets/worker-profiles/) | Nine custom worker configurations |
 | [scripts/](scripts/) | Helpers to initialize, validate, and archive stage records |
-
-The structural validator checks document and task structure. Requirement coverage, acceptance evidence, and stage approval still need review by the main agent. See the [document contracts](references/document-contracts.md) for commands and details.
 
 ---
 
 <div align="center">
-
-Made for the work between an idea and a finished stage. &nbsp; ✳
 
 [Illustrated guide ↗](https://jay201368.github.io/maestro/) &nbsp; · &nbsp; [MIT License](LICENSE)
 
