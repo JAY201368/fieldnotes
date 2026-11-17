@@ -7,6 +7,8 @@ description: Plan and deliver software in explicit development stages, with requ
 
 Maintain an agreed stage goal, complete task contracts, and evidence sufficient to accept the requested outcome. The main agent owns planning, dispatch, integration, shared records, and acceptance. Every task gets a fresh worker context. Continue through the authorized milestone without silently reducing scope.
 
+After completing each task acceptance or each workflow initialization, change, or archival operation, the main agent must create one scoped Git commit containing the corresponding changes and workflow records, preserving unrelated worktree edits.
+
 ## Enter at the current stage
 
 Inspect repository instructions and the worktree, preserving unrelated changes. Read `docs/workflow/current.md` when present, then the mapped stage requirements, architecture, relevant tasks and progress. Read decisions only as needed for the current uncertainty. Existing repositories may map their established paths; never create a competing architecture or task ledger merely to match the defaults.
