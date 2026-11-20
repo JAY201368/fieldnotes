@@ -1,6 +1,6 @@
 name = "spec-worker-sol-medium"
 description = "Single-task spec-driven worker using Sol at medium reasoning"
-model = "gpt-6.1-sol"
+model = "gpt-6.2-sol"
 model_reasoning_effort = "medium"
 
 developer_instructions = """

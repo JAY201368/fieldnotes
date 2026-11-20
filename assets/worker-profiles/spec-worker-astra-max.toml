@@ -1,6 +1,6 @@
 name = "spec-worker-astra-max"
 description = "Single-task spec-driven worker using Astra at max reasoning"
-model = "gpt-6-astra"
+model = "gpt-6.2-astra"
 model_reasoning_effort = "max"
 
 developer_instructions = """

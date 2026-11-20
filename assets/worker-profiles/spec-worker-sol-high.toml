@@ -1,6 +1,6 @@
 name = "spec-worker-sol-high"
 description = "Single-task spec-driven worker using Sol at high reasoning"
-model = "gpt-6.1-sol"
+model = "gpt-6.2-sol"
 model_reasoning_effort = "high"
 
 developer_instructions = """

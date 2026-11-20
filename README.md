@@ -43,7 +43,7 @@ The main agent maintains the architecture and dependency plan, dispatches bounde
 - **Execute** dependency-ready tasks with a fresh worker each time. Diagnose failed acceptance and retry the same task. Record and commit accepted work, then select the next ready task.
 - **Close** the stage after reviewing its outcomes and resolving unfinished requirements through completion or an explicitly approved scope change. Confirm closure, archive the handoff, and plan the next stage.
 
-Create a Git checkpoint after each task acceptance and workflow initialization, change, or archival operation.
+The main agent creates one scoped local Git commit for each accepted task, each workflow or stage setup, each material workflow change, each saved or updated discussion handoff, and each completed stage archive.
 
 ## How execution stays coordinated
 

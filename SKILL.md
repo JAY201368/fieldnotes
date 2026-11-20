@@ -7,8 +7,6 @@ description: Clarify user requirements through structured discussion, then plan 
 
 Maintain an agreed stage goal, complete task contracts, and evidence sufficient to accept the requested outcome. The main agent owns requirements discussion, planning, dispatch, integration, shared records, and acceptance. Every implementation task gets a fresh worker context. Continue through the authorized milestone without silently reducing scope.
 
-After completing each task acceptance or each workflow initialization, change, or archival operation, the main agent must create one scoped Git commit containing the corresponding changes and workflow records, preserving unrelated worktree edits.
-
 ## Enter at the current stage
 
 Inspect repository instructions and the worktree, preserving unrelated changes. Read `docs/workflow/current.md` when present, then the mapped stage requirements, architecture, relevant tasks and progress. Read decisions only as needed for the current uncertainty. Existing repositories may map their established paths; never create a competing architecture or task ledger merely to match the defaults.
@@ -21,7 +19,7 @@ Choose the applicable operation:
 - **Execute or resume** when the stage contracts are stable. Reconcile recorded completion with current files and evidence, then dispatch ready tasks.
 - **Close and transition** when the stage outcome is reached or the user explicitly approves a scope adjustment. Prepare closure and handoff for confirmation, archive after confirmation, then plan the new stage.
 
-Before a requirements discussion, read [references/requirements-discussion.md](references/requirements-discussion.md). Its built-in grilling protocol uses dependency-aware question rounds and explicit confirmation of shared understanding. Reuse applicable prior answers and authorization. Stable execution/resumption proceeds from current contracts; newly discovered requirement ambiguity reopens only the affected branches.
+Before a requirements discussion, read [references/requirements-discussion.md](references/requirements-discussion.md). Maestro includes the grilling protocol directly, with dependency-aware question rounds and explicit confirmation of shared understanding. Reuse applicable prior answers and authorization. Stable execution/resumption proceeds from current contracts; newly discovered requirement ambiguity reopens only the affected branches.
 
 For document setup, adaptation or closure, read [references/document-contracts.md](references/document-contracts.md). After shared understanding is confirmed, use the bootstrap script and templates as scaffolding, recording the confirmed requirements before architecture and task planning and filling relevant placeholders before dispatch. User requirements and current repository instructions remain binding. Architecture defines technical contracts; cards implement those contracts. Progress and historical records cannot override them. Resolve material conflicts before dependent implementation.
 
@@ -65,6 +63,17 @@ Visual checks apply when visual correctness or interaction is central, cheaper c
 Workers perform the planned checks and report commands, results, tested revision or file state, relevant environment and coverage. The main agent reviews the diff and acceptance evidence. Reuse evidence while the relevant code, dependencies, configuration and environment remain applicable. Rerun only for a concrete reason such as changed covered files, incomplete evidence, integration interference, a stale environment, or a critical flow requiring independent confirmation. Record that reason. Do not rerun checks solely because control moved from worker to main agent or from task to stage acceptance.
 
 Record concise evidence in the stage acceptance ledger and reference it from completed cards. Main-agent inspection can itself be evidence. Preserve failures, skips and external-service limitations truthfully. Only the main agent marks a task accepted after every criterion is evidenced. Stop adding verification once evidence is sufficient, and continue any remaining implementation required by the agreed scope.
+
+## Commit accepted tasks and workflow milestones
+
+The main agent must create one separate local Git commit at each of these points:
+
+- **Task acceptance** — after accepting each task and updating its task card and acceptance ledger, commit the accepted changes and the corresponding records before moving on from that acceptance.
+- **Workflow or stage initialization** — commit the prepared workflow records before the first implementation dispatch.
+- **Workflow changes** — commit material revisions to scope, requirements, architecture contracts, dependencies or acceptance criteria before dependent work resumes. Commit each completed save or update of a requirements discussion handoff when it is written.
+- **Stage archival** — commit the archive and the updated current-stage pointer after the user confirms closure and archival completes, before initializing the next stage.
+
+Review the staged diff and include only changes belonging to that task or milestone. Preserve unrelated work and exclude secrets. Follow applicable user and repository authorization rules. Push and publication require separate authorization. If a required commit is blocked, report the specific blocker and the affected task or milestone.
 
 ## Diagnose corrections
 

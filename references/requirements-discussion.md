@@ -30,7 +30,7 @@ Wait for the user's answers. Recompute the tree after each round. Dependent ques
 
 Finding repository and environment facts belongs to the agent. Assign bounded read-only investigation to a fresh-context subagent, supplying the question, relevant paths and preservation boundaries. These investigators need no implementation task card or initialized stage. Use the existing routing guidance and actual runtime capacity. A pending investigation is an unsettled prerequisite; ask independent frontier questions while it runs. Investigators report facts and evidence to the main agent, which retains ownership of user questions and shared records.
 
-When subagent tools are unavailable, disclose that specific capability gap and perform the bounded read-only lookup directly. Keep product decisions with the user. Investigation and discussion notes may proceed before confirmation; formal initialization, architecture/task planning and affected implementation wait for it.
+When subagent tools are unavailable or delegation is outside the current authorization, perform the bounded read-only lookup directly and report the constraint if it affects the discussion. Keep product decisions with the user. Investigation and discussion notes may proceed before confirmation; formal initialization, architecture/task planning and affected implementation wait for it.
 
 ## Confirm and hand off
 
@@ -40,4 +40,4 @@ After confirmation, record the summary and its confirmation basis in the mapped 
 
 For an active existing stage, keep unresolved questions and pending investigations in its progress record. For a new project or an uninitialized next stage, discuss in the conversation before initializing stage documents. Keep archived stage records immutable; save any needed next-stage discussion handoff separately. If an unfinished discussion must survive a context change, save a concise handoff at a discoverable project path and tell the user where it is. Include the goal, settled decisions and sources, remaining tree/frontier, pending investigations and relevant findings, and confirmation status. Resume by reconciling that record with the latest user instructions. Fold confirmed outcomes into authoritative requirements and clear superseded pending items.
 
-Follow the skill's scoped Git checkpoint rule when completing a workflow change, including saving or updating a discussion handoff. The next stage uses its own working records. Carry forward applicable architecture, durable decisions and the previous stage's confirmed handoff.
+Follow the [Git commit rule](../SKILL.md#commit-accepted-tasks-and-workflow-milestones) when completing a workflow change, including each completed save or update of a discussion handoff. The next stage uses its own working records. Carry forward applicable architecture, durable decisions and the previous stage's confirmed handoff.
